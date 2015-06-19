@@ -18,7 +18,7 @@ chmod +x build_no_sudo && \
 
 gpio -v && gpio readall
 
-cd /tmp/examples && \
+cd examples && \
 wget -O lights.zip https://www.dropbox.com/s/nxdrkuk94w9fpqo/lights.zip?dl=1 && \
 unzip lights.zip && \
 cd lights
