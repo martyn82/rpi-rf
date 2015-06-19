@@ -1,0 +1,36 @@
+#!/bin/bash
+
+set -e
+
+DEFAULT_CNT="rpi-rf"
+
+CMD=$1
+EXEC=$2
+CNT=$3
+
+if [ -z "$CMD" ]; then
+    echo "Please specify a command (exec|build)."
+    exit 1
+fi
+
+if [ -z "$CNT" ]; then
+    CNT=$DEFAULT_CNT
+fi
+
+CMD_EXEC="docker run --rm --cap-add=SYS_RAWIO --device=/dev/mem $CNT $EXEC"
+
+CMD_BUILD="docker build -t $CNT-build ."
+CMD_BUILD_RUN="docker run --cap-add=SYS_RAWIO --device=/dev/mem $CNT-build ./build.sh"
+
+CMD_CLEAN="docker rm -f $CNT-build"
+
+case "$CMD" in
+    exec )
+        $CMD_EXEC ;;
+    build )
+        $CMD_BUILD && \
+        $CMD_BUILD_RUN && \
+        echo "Now, commit the new image by using:\n$ docker commit <container_id> $CNT" ;;
+    clean )
+        $CMD_CLEAN ;;
+esac

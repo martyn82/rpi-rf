@@ -1,9 +1,13 @@
-FROM hypriot/rpi-gpio
+FROM resin/rpi-raspbian:wheezy
 MAINTAINER Martijn Endenburg <martijn.endenburg@gmail.com>
 
 ENV DEBIAN_FRONTEND noninteractive
 
-COPY bin/kaku /kaku
-COPY bin/action /action
-COPY bin/blokker /blokker
-COPY bin/elro /elro
+RUN apt-get update && apt-get install -y \
+    g++ \
+    git-core \
+    make \
+    unzip \
+    wget
+
+COPY build.sh /build.sh
