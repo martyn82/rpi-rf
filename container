@@ -30,7 +30,8 @@ case "$CMD" in
     build )
         $CMD_BUILD && \
         $CMD_BUILD_RUN && \
-        echo "Now, commit the new image by using:\n$ docker commit <container_id> $CNT" ;;
+        echo "Now, commit the new image by using:" && \
+        echo "$ docker commit <container_id> $CNT" ;;
     clean )
         $CMD_CLEAN ;;
 esac
