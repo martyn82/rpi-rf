@@ -2,13 +2,6 @@
 
 set -e
 
-pacman -S --noconfirm \
-    gcc \
-    git-core \
-    make \
-    wget \
-    unzip
-
 mkdir -p /tmp/wiringpi && \
 cd /tmp/wiringpi
 
