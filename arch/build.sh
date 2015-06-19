@@ -28,11 +28,11 @@ g++ -o action action.cpp -I/usr/local/include -L/usr/local/lib -lwiringPi
 g++ -o blokker blokker.cpp -I/usr/local/include -L/usr/local/lib -lwiringPi
 g++ -o elro elro.cpp -I/usr/local/include -L/usr/local/lib -lwiringPi
 
-mkdir -p $DIR/bin
+mkdir -p $DIR/../bin
 
-cp kaku $DIR/bin
-cp action $DIR/bin
-cp blokker $DIR/bin
-cp elro $DIR/bin
+cp kaku $DIR/../bin
+cp action $DIR/../bin
+cp blokker $DIR/../bin
+cp elro $DIR/../bin
 
 echo "Done. You can now build the docker image."
